@@ -1,0 +1,35 @@
+# ── Path Registry ─────────────────────────────────────────────────────────────
+# All paths are relative to the project root.
+
+data:
+  raw_dir:       "data/raw"
+  interim_dir:   "data/interim"
+  processed_dir: "data/processed"
+  external_dir:  "data/external"
+
+  raw_csv:          "data/raw/mhealth_raw_data.csv"
+  X_train:          "data/processed/X_train.npy"
+  X_test:           "data/processed/X_test.npy"
+  y_train:          "data/processed/y_train.npy"
+  y_test:           "data/processed/y_test.npy"
+  X_train_eng:      "data/interim/X_train_eng.npy"
+  X_test_eng:       "data/interim/X_test_eng.npy"
+  feature_names:    "data/interim/feature_names.json"
+
+artifacts:
+  checkpoints_dir:  "checkpoints"
+  scaler:           "checkpoints/scaler.joblib"
+  label_encoder:    "checkpoints/label_encoder.joblib"
+  pca:              "checkpoints/pca.joblib"
+
+outputs:
+  base_dir:         "outputs"
+  figures_dir:      "outputs/figures"
+  ml_results:       "outputs/ml_results.csv"
+  dl_results:       "outputs/dl_results.csv"
+  best_model_name:  "outputs/best_model_name.txt"
+  comparison_table: "outputs/comparison_table.csv"
+
+models:
+  ml_dir:           "checkpoints/ml"
+  dl_dir:           "checkpoints/dl"

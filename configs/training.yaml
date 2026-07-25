@@ -1,0 +1,55 @@
+# ── Deep Learning Training Configuration ──────────────────────────────────────
+
+general:
+  random_seed: 42
+  device: "auto"       # auto | cpu | cuda | mps
+  num_workers: 0       # DataLoader workers (0 = main thread, safe on Windows)
+
+dataloader:
+  batch_size: 256
+  shuffle: true
+  pin_memory: true
+
+mlp:
+  hidden_layers: [256, 128, 64]
+  dropout: 0.3
+  activation: "relu"
+  epochs: 50
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  patience: 10          # early stopping
+
+cnn1d:
+  num_filters: [64, 128, 256]
+  kernel_size: 3
+  dropout: 0.3
+  epochs: 50
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  patience: 10
+
+lstm:
+  hidden_size: 128
+  num_layers: 2
+  dropout: 0.3
+  bidirectional: false
+  window_size: 50       # samples per window for sequential input
+  epochs: 50
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  patience: 10
+
+gru:
+  hidden_size: 128
+  num_layers: 2
+  dropout: 0.3
+  bidirectional: false
+  window_size: 50
+  epochs: 50
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  patience: 10
+
+scheduler:
+  type: "cosine"        # cosine | step | none
+  T_max: 50             # for cosine annealing

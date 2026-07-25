@@ -1,0 +1,75 @@
+# ── Master Configuration ───────────────────────────────────────────────────────
+# Human Activity Detection — MHEALTH Dataset
+
+project:
+  name: "Human Activity Detection"
+  version: "1.0.0"
+  description: "HAR using wearable sensor data from the MHEALTH dataset"
+
+data:
+  raw_file: "mhealth_raw_data.csv"
+  target_column: "Activity"
+  subject_column: "subject"
+  # Activity label 0 = null (no activity) — drop before modeling
+  drop_null_activity: true
+  null_activity_label: 0
+
+  # 12 sensor feature columns
+  sensor_columns:
+    - alx   # Left ankle accelerometer X
+    - aly   # Left ankle accelerometer Y
+    - alz   # Left ankle accelerometer Z
+    - glx   # Left ankle gyroscope X
+    - gly   # Left ankle gyroscope Y
+    - glz   # Left ankle gyroscope Z
+    - arx   # Right lower-arm accelerometer X
+    - ary   # Right lower-arm accelerometer Y
+    - arz   # Right lower-arm accelerometer Z
+    - grx   # Right lower-arm gyroscope X
+    - gry   # Right lower-arm gyroscope Y
+    - grz   # Right lower-arm gyroscope Z
+
+  # Activity label mapping (1–12)
+  activity_map:
+    1:  "Standing still"
+    2:  "Sitting and relaxing"
+    3:  "Lying down"
+    4:  "Walking"
+    5:  "Climbing stairs"
+    6:  "Waist bends forward"
+    7:  "Frontal elevation of arms"
+    8:  "Knees bending (crouching)"
+    9:  "Cycling"
+    10: "Jogging"
+    11: "Running"
+    12: "Jump front & back"
+
+preprocessing:
+  test_size: 0.20
+  random_seed: 42
+  stratify: true
+  scaler: "standard"  # options: standard | minmax | robust
+
+feature_engineering:
+  add_statistical_features: true
+  apply_pca: false
+  pca_n_components: 8
+  variance_threshold: 0.01
+  importance_top_k: 20
+
+cross_validation:
+  n_splits: 5
+  shuffle: true
+
+visualization:
+  style: "dark_background"
+  figsize: [14, 7]
+  dpi: 150
+  palette:
+    primary:   "#00E5FF"   # cyan
+    secondary: "#FF6B6B"   # coral
+    accent:    "#FFD166"   # gold
+    neutral:   "#A0AEC0"   # slate
+    success:   "#06D6A0"   # green
+    bg:        "#1A1A2E"   # dark navy
+  save_format: "png"

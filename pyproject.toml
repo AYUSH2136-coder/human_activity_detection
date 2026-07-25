@@ -1,0 +1,83 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "human-activity-detection"
+version = "1.0.0"
+description = "Human Activity Detection using wearable sensor data (MHEALTH dataset)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+authors = [
+    { name = "B.Tech ML Project" }
+]
+
+keywords = [
+    "machine-learning",
+    "human-activity-recognition",
+    "wearable-sensors",
+    "mhealth",
+]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    # ---------------- Core Data Science ----------------
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    "scipy>=1.10.0",
+
+    # ---------------- Visualization ----------------
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "plotly>=5.14.0",
+
+    # ---------------- Machine Learning ----------------
+    "scikit-learn>=1.3.0",
+    "xgboost>=1.7.0",
+    "lightgbm>=4.0.0",
+    "catboost>=1.2.0",
+
+    # ---------------- Utilities ----------------
+    "joblib>=1.3.0",
+    "tqdm>=4.65.0",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0.0",
+
+    # ---------------- Notebook ----------------
+    "ipykernel>=6.22.0",
+    "notebook>=7.0.0",
+    "ipywidgets>=8.0.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.setuptools.package-dir]
+"" = "."
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "black>=23.0",
+    "isort>=5.12",
+    "flake8>=6.0",
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.isort]
+profile = "black"
+line_length = 100

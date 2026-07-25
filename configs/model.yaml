@@ -1,0 +1,65 @@
+# ── ML Model Hyperparameters ───────────────────────────────────────────────────
+
+logistic_regression:
+  C: 1.0
+  max_iter: 1000
+  solver: "lbfgs"
+  multi_class: "auto"
+  random_state: 42
+  n_jobs: -1
+
+decision_tree:
+  max_depth: 15
+  min_samples_split: 10
+  min_samples_leaf: 5
+  criterion: "gini"
+  random_state: 42
+
+random_forest:
+  n_estimators: 200
+  max_depth: 20
+  min_samples_split: 5
+  min_samples_leaf: 2
+  n_jobs: -1
+  random_state: 42
+
+svm:
+  C: 1.0
+  kernel: "rbf"
+  gamma: "scale"
+  decision_function_shape: "ovr"
+  cache_size: 2000
+  # Note: SVM is slow on large data; trained on a subsample if needed
+  max_train_samples: 100000
+
+xgboost:
+  n_estimators: 300
+  max_depth: 6
+  learning_rate: 0.1
+  subsample: 0.8
+  colsample_bytree: 0.8
+  use_label_encoder: false
+  eval_metric: "mlogloss"
+  random_state: 42
+  n_jobs: -1
+  tree_method: "hist"
+
+lightgbm:
+  n_estimators: 300
+  max_depth: -1
+  learning_rate: 0.1
+  num_leaves: 63
+  subsample: 0.8
+  colsample_bytree: 0.8
+  random_state: 42
+  n_jobs: -1
+  verbose: -1
+
+catboost:
+  iterations: 300
+  depth: 6
+  learning_rate: 0.1
+  random_seed: 42
+  verbose: 0
+  thread_count: -1
+  loss_function: "MultiClass"
